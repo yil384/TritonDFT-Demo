@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TritonDFT: Automating DFT with a Multi-Agent Framework</title>
+    <meta name="description" content="TritonDFT: Automating DFT with a Multi-Agent Framework - ICML 2026">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="container">
+            <div class="nav-items">
+                <a href="#" class="nav-icon"><i class="fas fa-home"></i></a>
+                <a href="#" class="nav-icon"><i class="fas fa-home"></i></a>
+                <a href="#" class="nav-icon"><i class="fas fa-home"></i></a>
+                <div class="nav-dropdown">
+                    <span class="nav-text">More Research <i class="fas fa-chevron-down"></i></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Table of Contents Sidebar -->
+    <div class="toc-sidebar" id="tocSidebar">
+        <div class="toc-content" id="tocContent">
+            <h3>Table of Contents</h3>
+            <nav>
+                <a href="#introduction">Introduction</a>
+                <a href="#youtube">YouTube Video</a>
+                <a href="#workflow">TritonDFT System</a>
+                <a href="#pareto">Pareto-Aware Optimization</a>
+                <a href="#benchmark">DFTBench</a>
+                <a href="#results">Results</a>
+                <a href="#share">Share</a>
+                <a href="#bibtex">BibTeX</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <!-- Logo and Title -->
+                <div class="hero-header">
+                    <div class="logo-title-wrapper">
+                        <div class="logo-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h1 class="logo-text">TritonDFT</h1>
+                    </div>
+                    <h2 class="subtitle">Automating DFT with a Multi-Agent Framework</h2>
+                </div>
+
+                <!-- Authors -->
+                <div class="authors">
+                    <p class="author-names">
+                        Anonymous Authors<sup>*1,2</sup>
+                    </p>
+                    <p class="affiliations">
+                        <sup>1</sup> Anonymous Institution, <sup>2</sup> Anonymous Institution
+                    </p>
+                    <p class="author-notes">
+                        <span class="note-item">* Equal Contribution</span>
+                        <span class="note-item">† Co-senior authors</span>
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="https://anonymous.4open.science/r/TritonDFT-43C7/" class="action-btn" target="_blank">
+                        <i class="fas fa-angle-right"></i> arXiv
+                    </a>
+                    <a href="https://anonymous.4open.science/r/TritonDFT-43C7/" class="action-btn" target="_blank">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-file-alt"></i> Paper
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-cube"></i> Model
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-desktop"></i> Demo
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fab fa-youtube"></i> Video
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-book"></i> Wiki
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fab fa-slack"></i> Slack
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fab fa-twitter"></i> X
+                    </a>
+                </div>
+
+                <!-- Performance Comparison Chart -->
+                <div class="performance-chart">
+                    <img src="assets/performance-comparison.png" alt="Performance Comparison" class="chart-image">
+                    <p class="chart-caption">
+                        Performance comparison across diverse DFT tasks. <strong>TritonDFT</strong> achieves substantial improvements over manual workflows and existing automation tools across structural optimization, electronic properties, phonon calculations, and adsorption energy tasks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Introduction</h2>
+                <div class="intro-content">
+                    <p>
+                        Density Functional Theory (DFT) stands as the computational cornerstone of modern materials science. As a first-principles method, DFT provides high-fidelity predictions to validate theoretical hypotheses and reduce experimental cost. However, executing DFT in practice involves a <strong>complex, multi-step workflow</strong>. Practitioners must search for structural information, configure input parameters, write DFT software-specific scripts, launch and monitor HPC jobs, and interpret and analyze execution results.
+                    </p>
+                    <p>
+                        As shown in our internal survey with 19 domain researchers at the PhD level or above, <strong>manually handling each step typically takes minutes to hours</strong>. This imposes substantial overhead and slows down the discovery process. While existing DFT tools can handle certain low-level details, users still need to manually handle most of the steps and coordinate the overall workflow.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            Such manual overhead gives rise to a natural question: <strong>Can we leverage Large Language Model (LLM)-based agents to orchestrate these steps and enable automation?</strong>
+                        </p>
+                    </div>
+                    <p>
+                        We introduce <strong>TritonDFT</strong>, a trainable multi-agent framework that enables efficient and accurate DFT execution through:
+                    </p>
+                    <ul class="key-points">
+                        <li><strong>Expert-curated, extensible workflow design</strong> with explicit task-to-executable mapping</li>
+                        <li><strong>Pareto-aware parameter inference</strong> for accuracy-cost trade-off optimization</li>
+                        <li><strong>Multi-source knowledge augmentation</strong> including domain tools, historical memory, and human-in-the-loop interaction</li>
+                    </ul>
+                    <p>
+                        We further introduce <strong>DFTBench</strong>, a benchmark for evaluating the agent's multi-dimensional capabilities, spanning science expertise, trade-off optimization, HPC knowledge, and cost efficiency.
+                    </p>
+                </div>
+
+                <!-- Time Comparison Figure -->
+                <div class="figure-container">
+                    <img src="assets/time-comparison.png" alt="Time Comparison" class="figure-image">
+                    <p class="figure-caption">
+                        <strong>Figure 1.</strong> DFT execution is a complex, multi-step process requiring heterogeneous domain expertise. Based on an internal survey conducted with 19 domain researchers at the PhD level or above, manually handling each step typically takes minutes to hours. <strong>TritonDFT reduces the per-step time to the scale of seconds to minutes</strong>, and provides automation across the entire workflow.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TritonDFT System Section -->
+        <section id="workflow" class="content-section bg-light">
+            <div class="container">
+                <h2 class="section-title"><strong>TritonDFT</strong>: An Expert-Informed Multi-Agent System</h2>
+                
+                <div class="system-overview">
+                    <div class="figure-container">
+                        <img src="assets/workflow-diagram.png" alt="TritonDFT Workflow" class="figure-image">
+                        <p class="figure-caption">
+                            <strong>(a)</strong> Overview of <strong>TritonDFT</strong>, a multi-agent system for automated DFT workflow execution. Four specialized agents—<strong>Planner</strong>, <strong>Executor</strong>, <strong>Analyzer</strong>, and <strong>Refiner</strong>—interact via shared knowledge base and task-specific tools. <strong>(b)</strong> The Plan-Execute-Refine loop enables iterative optimization and error recovery.
+                        </p>
+                    </div>
+
+                    <div class="system-description">
+                        <h3>Multi-Agent Architecture</h3>
+                        <p>
+                            TritonDFT adopts a <strong>Plan-Execute-Refine</strong> workflow design with four specialized agents:
+                        </p>
+                        
+                        <div class="agent-cards">
+                            <div class="agent-card">
+                                <div class="agent-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4>Planner Agent</h4>
+                                <p>Decomposes user queries into computational steps, selects appropriate DFT methods, and determines task-to-executable mappings based on material properties and desired outputs.</p>
+                            </div>
+                            
+                            <div class="agent-card">
+                                <div class="agent-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h4>Executor Agent</h4>
+                                <p>Generates DFT software-specific input scripts (Quantum Espresso, VASP), manages HPC resource allocation, launches jobs, and monitors execution progress.</p>
+                            </div>
+                            
+                            <div class="agent-card">
+                                <div class="agent-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Analyzer Agent</h4>
+                                <p>Parses DFT output files, extracts physical quantities, validates convergence criteria, and identifies numerical errors or physical inconsistencies.</p>
+                            </div>
+                            
+                            <div class="agent-card">
+                                <div class="agent-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <h4>Refiner Agent</h4>
+                                <p>Adjusts parameters based on convergence tests, recovers from failures, and iteratively optimizes configurations to meet accuracy and cost requirements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pareto-Aware Optimization Section -->
+        <section id="pareto" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Pareto-Aware Parameter Inference</h2>
+                
+                <div class="two-column-layout">
+                    <div class="column-text">
+                        <h3>Accuracy-Cost Trade-off Optimization</h3>
+                        <p>
+                            As a numerical simulation, DFT requires results to be obtained both <strong>accurately</strong> and <strong>efficiently</strong>. DFT parameter configurations simultaneously affect numerical fidelity and computational workload, introducing an inherent accuracy-cost trade-off.
+                        </p>
+                        <p>
+                            TritonDFT introduces a <strong>Pareto-aware parameter inference method</strong>, which enables the LLM to:
+                        </p>
+                        <ul>
+                            <li>Estimate the accuracy-cost Pareto frontier</li>
+                            <li>Iteratively refine configurations based on convergence tests</li>
+                            <li>Balance numerical precision with computational budget</li>
+                            <li>Adapt parameters to specific material properties</li>
+                        </ul>
+                        
+                        <div class="info-box">
+                            <h4>Training Objective</h4>
+                            <p>
+                                The Refiner agent is optimized to select configurations on or near the Pareto frontier, maximizing accuracy while minimizing computational cost. We formulate this as a multi-objective optimization problem with trajectory-level rewards.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="column-figure">
+                        <div class="figure-container">
+                            <img src="assets/pareto-frontier.png" alt="Pareto Frontier" class="figure-image">
+                            <p class="figure-caption">
+                                <strong>Figure 2.</strong> Energy Deviation and Computational Cost Variations with different DFT Parameters for Silicon (Space Group Fd-3m). TritonDFT learns to identify and select configurations on the Pareto frontier (highlighted), achieving optimal accuracy-cost trade-offs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DFTBench Section -->
+        <section id="benchmark" class="content-section bg-light">
+            <div class="container">
+                <h2 class="section-title">DFTBench: Multi-Dimensional Capability Evaluation</h2>
+                
+                <div class="benchmark-intro">
+                    <p class="lead">
+                        Despite extensive benchmarks like graduate-level materials-domain knowledge, key capabilities in end-to-end DFT workflows—including <strong>numerical accuracy</strong>, <strong>Pareto-optimality</strong>, <strong>HPC parallelization</strong>, and <strong>cost efficiency</strong>—remain unevaluated. We present <strong>DFTBench</strong> to evaluate these capabilities.
+                    </p>
+                </div>
+
+                <div class="benchmark-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">100</div>
+                        <div class="stat-label">Materials</div>
+                        <p>Spanning 10 distinct types</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">CPU Hours</div>
+                        <p>Expert-curated ground truth</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Dimensions</div>
+                        <p>Multi-faceted evaluation</p>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">Evaluation Dimensions</h3>
+                <div class="dimensions-grid">
+                    <div class="dimension-box">
+                        <div class="dim-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Science Expertise</h4>
+                        <p>Understanding of physics and materials science concepts, DFT theory, and domain-specific knowledge required for parameter selection.</p>
+                    </div>
+                    
+                    <div class="dimension-box">
+                        <div class="dim-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>Trade-off Optimization</h4>
+                        <p>Ability to estimate and optimize the accuracy-cost Pareto frontier, balancing numerical fidelity with computational efficiency.</p>
+                    </div>
+                    
+                    <div class="dimension-box">
+                        <div class="dim-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>HPC Knowledge</h4>
+                        <p>Expertise in parallelization strategies, resource allocation, job scheduling, and optimization of computational workflows on HPC systems.</p>
+                    </div>
+                    
+                    <div class="dimension-box">
+                        <div class="dim-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4>Cost Efficiency</h4>
+                        <p>Practical efficiency in real-world resource usage, minimizing wall-clock time and computational cost while maintaining accuracy requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Experimental Results</h2>
+
+                <h3 class="subsection-title">Main Results</h3>
+                <p class="results-intro">
+                    Comprehensive experiments demonstrate the potential of TritonDFT as a practical building block for real-world research. We compare against manual workflows, existing automation tools, and LLM-based agents.
+                </p>
+
+                <div class="results-table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Structural Opt.</th>
+                                <th>Band Structure</th>
+                                <th>Phonon Calc.</th>
+                                <th>Adsorption</th>
+                                <th>Avg. Δ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Manual Workflow</td>
+                                <td>82.3</td>
+                                <td>75.6</td>
+                                <td>68.4</td>
+                                <td>71.2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Atomate</td>
+                                <td>78.5</td>
+                                <td>72.1</td>
+                                <td>64.8</td>
+                                <td>68.3</td>
+                                <td>-5.2%</td>
+                            </tr>
+                            <tr>
+                                <td>GPT-4o</td>
+                                <td>71.2</td>
+                                <td>68.9</td>
+                                <td>58.7</td>
+                                <td>63.4</td>
+                                <td>-11.4%</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>TritonDFT</strong></td>
+                                <td><strong>91.7</strong></td>
+                                <td><strong>88.3</strong></td>
+                                <td><strong>84.2</strong></td>
+                                <td><strong>86.5</strong></td>
+                                <td><strong>+14.9%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">
+                        <strong>Table 1.</strong> Accuracy comparison on DFTBench tasks. TritonDFT achieves substantial improvements over baselines across all task categories.
+                    </p>
+                </div>
+
+                <h3 class="subsection-title">Key Findings</h3>
+                <div class="findings-grid">
+                    <div class="finding-box success">
+                        <div class="finding-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>End-to-End Automation</h4>
+                        <p>TritonDFT successfully automates the complete DFT workflow from user query to result analysis, reducing manual intervention time by <strong>80-90%</strong>.</p>
+                    </div>
+                    
+                    <div class="finding-box success">
+                        <div class="finding-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Pareto Optimization</h4>
+                        <p>Pareto-aware parameter inference significantly improves accuracy-cost trade-offs, achieving <strong>15-20% cost reduction</strong> at equivalent accuracy levels.</p>
+                    </div>
+                    
+                    <div class="finding-box success">
+                        <div class="finding-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Extensible Design</h4>
+                        <p>The explicit task-to-executable mapping enables support for diverse DFT tasks, from simple structural relaxation to complex phonon property calculations.</p>
+                    </div>
+                    
+                    <div class="finding-box info">
+                        <div class="finding-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h4>LLM Capability Analysis</h4>
+                        <p>Experiments reveal substantial capability differences across LLMs in different workflow steps, with domain knowledge being the primary bottleneck.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Share Section -->
+        <section id="share" class="content-section bg-light">
+            <div class="container">
+                <h2 class="section-title">Share <strong>TritonDFT</strong></h2>
+                <div class="share-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20TritonDFT%3A%20Automating%20DFT%20with%20a%20Multi-Agent%20Framework" class="share-btn twitter" target="_blank">
+                        <i class="fab fa-twitter"></i> Share on X (Twitter)
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=YOUR_URL" class="share-btn linkedin" target="_blank">
+                        <i class="fab fa-linkedin"></i> Share on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BibTeX Section -->
+        <section id="bibtex" class="content-section">
+            <div class="container">
+                <h2 class="section-title">BibTeX</h2>
+                <div class="bibtex-container">
+                    <button class="copy-button" onclick="copyBibtex()">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <pre><code>@article{tritondft2026,
+  title={TritonDFT: Automating DFT with a Multi-Agent Framework},
+  author={Anonymous Authors},
+  journal={International Conference on Machine Learning (ICML)},
+  year={2026}
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logos">
+                    <div class="footer-logo">Anonymous Institution</div>
+                </div>
+                <p class="footer-note">
+                    This website is adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a> and <a href="https://mathvista.github.io/" target="_blank">MathVista</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

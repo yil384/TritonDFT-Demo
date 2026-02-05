@@ -30,11 +30,11 @@
             <h3>Table of Contents</h3>
             <nav>
                 <a href="#introduction">Introduction</a>
-                <a href="#youtube">YouTube Video</a>
                 <a href="#workflow">TritonDFT System</a>
                 <a href="#pareto">Pareto-Aware Optimization</a>
                 <a href="#benchmark">DFTBench</a>
                 <a href="#results">Results</a>
+                <a href="#demo">Demo</a>
                 <a href="#share">Share</a>
                 <a href="#bibtex">BibTeX</a>
             </nav>
@@ -101,11 +101,10 @@
                     </a>
                 </div>
 
-                <!-- Performance Comparison Chart -->
-                <div class="performance-chart">
-                    <img src="assets/radar.pdf" alt="Performance Analysis Radar" class="chart-image">
-                    <p class="chart-caption">
-                        <strong>Performance Analysis</strong> with Pass Rate and Cost Efficiency across different material types. Cost Efficiency is measured as (1 / Cost Factor), averaged over all passed cases within each type.
+                <!-- Abstract -->
+                <div class="performance-chart" style="text-align: left; max-width: 900px; margin: 30px auto 0;">
+                    <p class="chart-caption" style="font-size: 16px; line-height: 1.8; color: #333;">
+                        Density Functional Theory (DFT) is a cornerstone of materials science, yet executing DFT in practice requires coordinating a complex, multi-step workflow. We present <strong>TritonDFT</strong>, a multi-agent framework that enables efficient and accurate DFT execution through an expert-curated, extensible workflow design, <strong>Pareto-aware parameter inference</strong>, and multi-source knowledge augmentation. We further introduce <strong>DFTBench</strong>, a benchmark for evaluating the agent's multi-dimensional capabilities, spanning science expertise, trade-off optimization, HPC knowledge, and cost efficiency.
                     </p>
                 </div>
             </div>
@@ -142,7 +141,7 @@
 
                 <!-- Time Comparison Figure -->
                 <div class="figure-container">
-                    <img src="assets/intro4.pdf" alt="DFT Workflow Time Comparison" class="figure-image">
+                    <img src="assets/intro4.png" alt="DFT Workflow Time Comparison" class="figure-image">
                     <p class="figure-caption">
                         <strong>Figure 1.</strong> DFT execution is a complex, multi-step process requiring heterogeneous domain expertise. Based on an internal survey conducted with 19 domain researchers at the PhD level or above, manually handling each step typically takes minutes to hours. <strong>TritonDFT reduces the per-step time to the scale of seconds to minutes</strong>, and provides automation across the entire workflow.
                     </p>
@@ -157,7 +156,7 @@
                 
                 <div class="system-overview">
                     <div class="figure-container">
-                        <img src="assets/overview3.pdf" alt="TritonDFT System Overview" class="figure-image">
+                        <img src="assets/overview3.png" alt="TritonDFT System Overview" class="figure-image">
                         <p class="figure-caption">
                             Overview of <strong>TritonDFT</strong>, a multi-agent system for automated DFT workflow execution. Four specialized agents—<strong>Planner</strong>, <strong>Executor</strong>, <strong>Analyzer</strong>, and <strong>Refiner</strong>—interact via shared knowledge base and task-specific tools. The Plan-Execute-Refine loop enables iterative optimization and error recovery.
                         </p>
@@ -238,7 +237,7 @@
                     
                     <div class="column-figure">
                         <div class="figure-container">
-                            <img src="assets/cost_vs_accuracy_three_models_si.pdf" alt="Pareto Frontier" class="figure-image">
+                            <img src="assets/cost_vs_accuracy_three_models_si.png" alt="Pareto Frontier" class="figure-image">
                             <p class="figure-caption">
                                 <strong>Figure 2.</strong> Energy Deviation and Computational Cost Variations with different DFT Parameters for Silicon (Space Group Fd-3m). TritonDFT learns to identify and select configurations on the Pareto frontier, achieving optimal accuracy-cost trade-offs.
                             </p>
@@ -314,10 +313,502 @@
             </div>
         </section>
 
-        <section id="results"> 到 </section>
+        <!-- Results Section -->
+        <section id="results" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Experimental Results</h2>
+                
+                <!-- Framework Comparison -->
+                <div class="results-content">
+                    <h3 class="subsection-title">Framework Comparison</h3>
+                    <p class="results-intro">
+                        We compare TritonDFT with state-of-the-art agentic DFT frameworks. TritonDFT provides the most comprehensive evaluation on a diverse dataset of 10 material categories, uniquely benchmarking accuracy-cost tradeoff, parallel efficiency, and monetary cost.
+                    </p>
+
+                    <div class="results-table-container">
+                        <table class="results-table framework-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" style="min-width: 120px;">Method</th>
+                                    <th colspan="3" style="border-bottom: 1px solid #ddd;">Framework Architecture</th>
+                                    <th colspan="5" style="border-bottom: 1px solid #ddd;">Evaluation Dataset &amp; Metrics</th>
+                                </tr>
+                                <tr>
+                                    <th style="font-size: 12px; min-width: 100px;">Supported<br>Task Types</th>
+                                    <th style="font-size: 12px; min-width: 100px;">Parameter<br>Configuration</th>
+                                    <th style="font-size: 12px; min-width: 100px;">Knowledge<br>Augmentation</th>
+                                    <th style="font-size: 12px; min-width: 90px;">Material<br>Types</th>
+                                    <th style="font-size: 12px; min-width: 100px;">Ground Truth<br>Curation</th>
+                                    <th style="font-size: 12px;">Accuracy-Cost<br>Tradeoff</th>
+                                    <th style="font-size: 12px;">Parallel<br>Efficiency</th>
+                                    <th style="font-size: 12px;">Monetary<br>Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>DREAMS</strong></td>
+                                    <td>Surface Chemistry<br>(Adsorption)</td>
+                                    <td>Physics Only</td>
+                                    <td>Open Database</td>
+                                    <td>2<br>(Metal, Insulator)</td>
+                                    <td>Public Dataset</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>VASPilot</strong></td>
+                                    <td>Electronic Structure<br>(Band, DOS)</td>
+                                    <td>Physics Only</td>
+                                    <td>Open Database</td>
+                                    <td>1<br>(Semiconductor)</td>
+                                    <td>Public Dataset</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AgenticDFT</strong></td>
+                                    <td>Geometry &amp; Energetics<br>(Relaxation, Band)</td>
+                                    <td>Physics Only</td>
+                                    <td>Open Database</td>
+                                    <td>2<br>(Metal, Semiconductor)</td>
+                                    <td>Public Dataset</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                    <td style="text-align:center; color:#e74c3c;">✗</td>
+                                </tr>
+                                <tr class="highlight-row">
+                                    <td><strong>TritonDFT (Ours)</strong></td>
+                                    <td><strong>General QE Usage<br>(&gt;10 Task Types)</strong></td>
+                                    <td><strong>Physics + HPC<br>(Pareto-aware)</strong></td>
+                                    <td><strong>Open Database<br>+ Memory<br>+ Human-in-the-loop</strong></td>
+                                    <td><strong>10<br>(Metal, Insulator,<br>Superconductor,<br>Topological, ...)</strong></td>
+                                    <td><strong>Expert Curated<br>Calculations</strong></td>
+                                    <td style="text-align:center; color:#27ae60; font-size:18px;"><strong>✓</strong></td>
+                                    <td style="text-align:center; color:#27ae60; font-size:18px;"><strong>✓</strong></td>
+                                    <td style="text-align:center; color:#27ae60; font-size:18px;"><strong>✓</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table-caption">
+                            <strong>Table 1.</strong> Comparison of TritonDFT with state-of-the-art agentic DFT frameworks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Parameter Configuration Performance -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <h3 class="subsection-title">Parameter Configuration Performance</h3>
+                    <p class="results-intro">
+                        Model performance on DFT parameter configuration across different LLMs under varying error thresholds. GPT 5.2 achieves the highest pass rates, while Claude Opus 4.5 excels at advanced parameter satisfaction.
+                    </p>
+
+                    <div class="results-table-container">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Model</th>
+                                    <th colspan="2" style="border-bottom: 1px solid #ddd;">ΔE &lt; 20 meV/atom</th>
+                                    <th colspan="2" style="border-bottom: 1px solid #ddd;">ΔE &lt; 10 meV/atom</th>
+                                    <th colspan="2" style="border-bottom: 1px solid #ddd;">ΔE &lt; 1 meV/atom</th>
+                                    <th rowspan="2" style="font-size: 12px;">Advanced Param.<br>Satisfaction</th>
+                                </tr>
+                                <tr>
+                                    <th style="font-size: 12px;">Pass Rate</th>
+                                    <th style="font-size: 12px;">Cost Factor</th>
+                                    <th style="font-size: 12px;">Pass Rate</th>
+                                    <th style="font-size: 12px;">Cost Factor</th>
+                                    <th style="font-size: 12px;">Pass Rate</th>
+                                    <th style="font-size: 12px;">Cost Factor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="best-row">
+                                    <td><strong>GPT 5.2</strong></td>
+                                    <td><strong>70.5%</strong></td>
+                                    <td>14.29</td>
+                                    <td><strong>67.0%</strong></td>
+                                    <td>8.95</td>
+                                    <td><strong>47.1%</strong></td>
+                                    <td>4.23</td>
+                                    <td>51.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>GPT 5.1</td>
+                                    <td>39.3%</td>
+                                    <td>6.22</td>
+                                    <td>32.9%</td>
+                                    <td>4.21</td>
+                                    <td>9.8%</td>
+                                    <td>2.24</td>
+                                    <td>43.6%</td>
+                                </tr>
+                                <tr>
+                                    <td>GPT 4o</td>
+                                    <td>52.8%</td>
+                                    <td style="color: #27ae60; font-weight: 600;">1.85</td>
+                                    <td>38.2%</td>
+                                    <td style="color: #27ae60; font-weight: 600;">1.28</td>
+                                    <td>13.6%</td>
+                                    <td style="color: #27ae60; font-weight: 600;">0.50</td>
+                                    <td>28.2%</td>
+                                </tr>
+                                <tr>
+                                    <td>GPT 4o mini</td>
+                                    <td>5.7%</td>
+                                    <td>1.01</td>
+                                    <td>5.6%</td>
+                                    <td>1.17</td>
+                                    <td>4.5%</td>
+                                    <td>0.97</td>
+                                    <td>28.2%</td>
+                                </tr>
+                                <tr>
+                                    <td>Gemini 2.5 Pro</td>
+                                    <td>59.6%</td>
+                                    <td>3.77</td>
+                                    <td>53.9%</td>
+                                    <td>2.95</td>
+                                    <td>14.9%</td>
+                                    <td>1.24</td>
+                                    <td>48.7%</td>
+                                </tr>
+                                <tr>
+                                    <td>Gemini 2.5 Flash</td>
+                                    <td>23.6%</td>
+                                    <td>1.85</td>
+                                    <td>16.9%</td>
+                                    <td>1.68</td>
+                                    <td>2.3%</td>
+                                    <td>0.78</td>
+                                    <td>38.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Claude Opus 4.5</td>
+                                    <td>9.0%</td>
+                                    <td>1.62</td>
+                                    <td>5.6%</td>
+                                    <td>1.33</td>
+                                    <td>4.5%</td>
+                                    <td>0.58</td>
+                                    <td style="color: #27ae60; font-weight: 600;"><strong>53.8%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Claude Sonnet 4.5</td>
+                                    <td>30.3%</td>
+                                    <td>2.38</td>
+                                    <td>25.8%</td>
+                                    <td>1.93</td>
+                                    <td>21.6%</td>
+                                    <td>0.87</td>
+                                    <td>38.5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table-caption">
+                            <strong>Table 2.</strong> Model performance on DFT parameter configuration. GPT 4o demonstrates the best cost efficiency (<span style="color:#27ae60;">green</span> values).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Radar Chart -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <h3 class="subsection-title">Performance by Material Type</h3>
+                    <div class="figure-container">
+                        <img src="assets/radar.png" alt="Performance Radar Chart" class="figure-image">
+                        <p class="figure-caption">
+                            <strong>Figure 3.</strong> Performance analysis with Pass Rate and Cost Efficiency across different material types. Cost Efficiency is measured as (1 / Cost Factor), averaged over all passed cases within each type.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mean Absolute Error -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <h3 class="subsection-title">Accuracy Analysis</h3>
+                    <p class="results-intro">
+                        Mean absolute error (MAE, %) across different DFT tasks, computed over successfully finished execution results.
+                    </p>
+                    <div class="results-table-container" style="max-width: 700px; margin: 0 auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>VC-relax</th>
+                                    <th>SCF</th>
+                                    <th>Band Gap</th>
+                                    <th>DOS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="best-row">
+                                    <td><strong>GPT 5.2</strong></td>
+                                    <td><strong>0.04</strong></td>
+                                    <td><strong>0.04</strong></td>
+                                    <td><strong>0.09</strong></td>
+                                    <td><strong>0.97</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>GPT 5.1</td>
+                                    <td>0.06</td>
+                                    <td>0.07</td>
+                                    <td>0.31</td>
+                                    <td>2.21</td>
+                                </tr>
+                                <tr>
+                                    <td>GPT 4o</td>
+                                    <td>0.10</td>
+                                    <td>1.11</td>
+                                    <td>2.48</td>
+                                    <td>9.04</td>
+                                </tr>
+                                <tr>
+                                    <td>Gemini 2.5 Pro</td>
+                                    <td>0.05</td>
+                                    <td>0.09</td>
+                                    <td>1.14</td>
+                                    <td>1.40</td>
+                                </tr>
+                                <tr>
+                                    <td>Gemini 2.5 Flash</td>
+                                    <td>0.06</td>
+                                    <td>0.83</td>
+                                    <td>1.21</td>
+                                    <td>11.17</td>
+                                </tr>
+                                <tr>
+                                    <td>Claude Opus 4.5</td>
+                                    <td>0.06</td>
+                                    <td>0.11</td>
+                                    <td>2.10</td>
+                                    <td>3.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Claude Sonnet 4.5</td>
+                                    <td>0.09</td>
+                                    <td>0.14</td>
+                                    <td>2.00</td>
+                                    <td>2.12</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table-caption">
+                            <strong>Table 3.</strong> Mean absolute error (%) across different DFT tasks. Lower is better. GPT 5.2 consistently achieves the lowest errors.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Throughput Comparison -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <h3 class="subsection-title">Throughput &amp; Cost Tradeoff</h3>
+                    <div class="two-column-layout">
+                        <div class="column-figure">
+                            <div class="figure-container" style="margin-top:0;">
+                                <img src="assets/throughput_wo_dft_comparison.png" alt="Throughput Comparison" class="figure-image">
+                                <p class="figure-caption">
+                                    <strong>Figure 4.</strong> Throughput comparison (excluding DFT execution time) across different models.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column-figure">
+                            <div class="figure-container" style="margin-top:0;">
+                                <img src="assets/dft_k8_tradeoff_analysis.png" alt="K-point Tradeoff Analysis" class="figure-image">
+                                <p class="figure-caption">
+                                    <strong>Figure 5.</strong> K-point grid and computational cost tradeoff analysis for DFT calculations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cost & Parallel Tables Side by Side -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <div class="two-column-layout">
+                        <div>
+                            <h3 class="subsection-title" style="margin-top:0;">Cost Analysis</h3>
+                            <p class="results-intro" style="text-align:left;">Average API cost (USD) per query.</p>
+                            <div class="results-table-container">
+                                <table class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>Struct Relax</th>
+                                            <th>Band Gap</th>
+                                            <th>DOS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>GPT 5.2</td>
+                                            <td>0.05 ± 0.02</td>
+                                            <td>0.15 ± 0.04</td>
+                                            <td>0.13 ± 0.04</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GPT 5.1</td>
+                                            <td>0.04 ± 0.02</td>
+                                            <td>0.13 ± 0.04</td>
+                                            <td>0.10 ± 0.03</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GPT 4o</td>
+                                            <td>0.06 ± 0.03</td>
+                                            <td>0.18 ± 0.04</td>
+                                            <td>0.14 ± 0.03</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gemini 2.5 Pro</td>
+                                            <td>0.05 ± 0.03</td>
+                                            <td>0.13 ± 0.04</td>
+                                            <td>0.11 ± 0.04</td>
+                                        </tr>
+                                        <tr class="best-row">
+                                            <td><strong>Gemini 2.5 Flash</strong></td>
+                                            <td><strong>0.01 ± 0.01</strong></td>
+                                            <td><strong>0.03 ± 0.01</strong></td>
+                                            <td><strong>0.03 ± 0.01</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Claude Opus 4.5</td>
+                                            <td>0.15 ± 0.08</td>
+                                            <td>0.44 ± 0.13</td>
+                                            <td>0.37 ± 0.11</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Claude Sonnet 4.5</td>
+                                            <td>0.15 ± 0.06</td>
+                                            <td>0.34 ± 0.09</td>
+                                            <td>0.28 ± 0.08</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="table-caption">
+                                    <strong>Table 4.</strong> Average API cost per query. Gemini 2.5 Flash is the most cost-effective.
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="subsection-title" style="margin-top:0;">Parallel Efficiency</h3>
+                            <p class="results-intro" style="text-align:left;">Relative speedup (%) over default baseline.</p>
+                            <div class="results-table-container">
+                                <table class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>16 Cores</th>
+                                            <th>32 Cores</th>
+                                            <th>64 Cores</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>GPT 5.2</td>
+                                            <td style="color:#27ae60;">+14.4%</td>
+                                            <td>+4.2%</td>
+                                            <td style="color:#27ae60;">+15.1%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GPT 5.1</td>
+                                            <td style="color:#27ae60;">+11.3%</td>
+                                            <td style="color:#e74c3c;">−5.8%</td>
+                                            <td style="color:#e74c3c;">−14.1%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GPT 4o</td>
+                                            <td style="color:#e74c3c;">−21.0%</td>
+                                            <td style="color:#e74c3c;">−34.0%</td>
+                                            <td style="color:#e74c3c;">−23.6%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GPT 4o mini</td>
+                                            <td style="color:#e74c3c;">−25.7%</td>
+                                            <td style="color:#e74c3c;">−25.6%</td>
+                                            <td>+2.8%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gemini 2.5 Pro</td>
+                                            <td>+4.7%</td>
+                                            <td style="color:#e74c3c;">−6.4%</td>
+                                            <td style="color:#e74c3c;">−3.3%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gemini 2.5 Flash</td>
+                                            <td style="color:#e74c3c;">−20.7%</td>
+                                            <td style="color:#e74c3c;">−43.7%</td>
+                                            <td style="color:#e74c3c;">−32.0%</td>
+                                        </tr>
+                                        <tr class="best-row">
+                                            <td><strong>Claude Opus 4.5</strong></td>
+                                            <td style="color:#27ae60;"><strong>+15.4%</strong></td>
+                                            <td style="color:#27ae60;"><strong>+16.1%</strong></td>
+                                            <td style="color:#27ae60;"><strong>+16.1%</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Claude Sonnet 4.5</td>
+                                            <td style="color:#27ae60;">+13.0%</td>
+                                            <td>+5.1%</td>
+                                            <td>+2.4%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="table-caption">
+                                    <strong>Table 5.</strong> Claude Opus 4.5 shows the most consistent speedup across all core counts.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Findings -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <h3 class="subsection-title">Key Findings</h3>
+                    <div class="findings-grid">
+                        <div class="finding-box success">
+                            <div class="finding-icon"><i class="fas fa-check-circle"></i></div>
+                            <h4>End-to-End Automation</h4>
+                            <p>TritonDFT automates the complete DFT workflow, reducing manual intervention time by <strong>80–90%</strong> based on our survey with 19 domain researchers.</p>
+                        </div>
+                        <div class="finding-box success">
+                            <div class="finding-icon"><i class="fas fa-check-circle"></i></div>
+                            <h4>Pareto Optimization</h4>
+                            <p>Pareto-aware parameter inference enables intelligent accuracy-cost trade-offs, with <strong>GPT 5.2 achieving 70.5% pass rate</strong> at the 20 meV/atom threshold.</p>
+                        </div>
+                        <div class="finding-box success">
+                            <div class="finding-icon"><i class="fas fa-check-circle"></i></div>
+                            <h4>Extensible Design</h4>
+                            <p>Supports <strong>10 diverse material categories</strong> (metal, insulator, superconductor, topological, etc.) and &gt;10 task types in general QE usage.</p>
+                        </div>
+                        <div class="finding-box info">
+                            <div class="finding-icon"><i class="fas fa-info-circle"></i></div>
+                            <h4>LLM Capability Analysis</h4>
+                            <p>Experiments reveal substantial capability differences: <strong>GPT 5.2 for accuracy, GPT 4o for cost efficiency, Claude Opus 4.5 for parallelization</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Video Section -->
+        <section id="demo" class="content-section bg-light">
+            <div class="container">
+                <h2 class="section-title">Demo</h2>
+                <p class="results-intro">
+                    Watch TritonDFT in action — from user query to automated DFT execution, parameter optimization, and result analysis.
+                </p>
+                <div class="demo-video-container">
+                    <video class="demo-video" controls preload="metadata" poster="">
+                        <source src="assets/tritondft_website_64MB.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="figure-caption" style="text-align: center; margin-top: 20px;">
+                        <strong>TritonDFT Demo.</strong> End-to-end automated DFT workflow execution, showcasing the multi-agent framework with Pareto-aware parameter inference and iterative refinement.
+                    </p>
+                </div>
+            </div>
+        </section>
 
         <!-- Share Section -->
-        <section id="share" class="content-section bg-light">
+        <section id="share" class="content-section">
             <div class="container">
                 <h2 class="section-title">Share <strong>TritonDFT</strong></h2>
                 <div class="share-buttons">

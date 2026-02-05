@@ -102,7 +102,7 @@
                 </div>
 
                 <!-- Abstract -->
-                <div class="performance-chart" style="text-align: left; max-width: 900px; margin: 30px auto 0;">
+                <div class="performance-chart" style="text-align: left;">
                     <p class="chart-caption" style="font-size: 16px; line-height: 1.8; color: #333;">
                         Density Functional Theory (DFT) is a cornerstone of materials science, yet executing DFT in practice requires coordinating a complex, multi-step workflow. We present <strong>TritonDFT</strong>, a multi-agent framework that enables efficient and accurate DFT execution through an expert-curated, extensible workflow design, <strong>Pareto-aware parameter inference</strong>, and multi-source knowledge augmentation. We further introduce <strong>DFTBench</strong>, a benchmark for evaluating the agent's multi-dimensional capabilities, spanning science expertise, trade-off optimization, HPC knowledge, and cost efficiency.
                     </p>
@@ -756,6 +756,20 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Phonon Dispersion -->
+                <div class="results-content" style="margin-top: 60px;">
+                    <h3 class="subsection-title">Phonon Dispersion Analysis</h3>
+                    <p class="results-intro">
+                        TritonDFT supports advanced DFT tasks including phonon dispersion calculations. Below we show representative phonon band structures computed end-to-end by TritonDFT, demonstrating the framework's capability to handle complex lattice-dynamics workflows.
+                    </p>
+                    <div class="figure-container">
+                        <img src="assets/phono.png" alt="Phonon Dispersion" class="figure-image">
+                        <p class="figure-caption">
+                            <strong>Figure 6.</strong> Phonon dispersion relations computed by TritonDFT for representative materials, showcasing automated phonon workflow execution including self-consistent calculation, force-constant extraction, and band-path interpolation.
+                        </p>
                     </div>
                 </div>
 

@@ -103,9 +103,9 @@
 
                 <!-- Performance Comparison Chart -->
                 <div class="performance-chart">
-                    <img src="assets/performance-comparison.png" alt="Performance Comparison" class="chart-image">
+                    <img src="assets/radar.pdf" alt="Performance Analysis Radar" class="chart-image">
                     <p class="chart-caption">
-                        Performance comparison across diverse DFT tasks. <strong>TritonDFT</strong> achieves substantial improvements over manual workflows and existing automation tools across structural optimization, electronic properties, phonon calculations, and adsorption energy tasks.
+                        <strong>Performance Analysis</strong> with Pass Rate and Cost Efficiency across different material types. Cost Efficiency is measured as (1 / Cost Factor), averaged over all passed cases within each type.
                     </p>
                 </div>
             </div>
@@ -142,7 +142,7 @@
 
                 <!-- Time Comparison Figure -->
                 <div class="figure-container">
-                    <img src="assets/time-comparison.png" alt="Time Comparison" class="figure-image">
+                    <img src="assets/intro4.pdf" alt="DFT Workflow Time Comparison" class="figure-image">
                     <p class="figure-caption">
                         <strong>Figure 1.</strong> DFT execution is a complex, multi-step process requiring heterogeneous domain expertise. Based on an internal survey conducted with 19 domain researchers at the PhD level or above, manually handling each step typically takes minutes to hours. <strong>TritonDFT reduces the per-step time to the scale of seconds to minutes</strong>, and provides automation across the entire workflow.
                     </p>
@@ -157,9 +157,9 @@
                 
                 <div class="system-overview">
                     <div class="figure-container">
-                        <img src="assets/workflow-diagram.png" alt="TritonDFT Workflow" class="figure-image">
+                        <img src="assets/overview3.pdf" alt="TritonDFT System Overview" class="figure-image">
                         <p class="figure-caption">
-                            <strong>(a)</strong> Overview of <strong>TritonDFT</strong>, a multi-agent system for automated DFT workflow execution. Four specialized agents—<strong>Planner</strong>, <strong>Executor</strong>, <strong>Analyzer</strong>, and <strong>Refiner</strong>—interact via shared knowledge base and task-specific tools. <strong>(b)</strong> The Plan-Execute-Refine loop enables iterative optimization and error recovery.
+                            Overview of <strong>TritonDFT</strong>, a multi-agent system for automated DFT workflow execution. Four specialized agents—<strong>Planner</strong>, <strong>Executor</strong>, <strong>Analyzer</strong>, and <strong>Refiner</strong>—interact via shared knowledge base and task-specific tools. The Plan-Execute-Refine loop enables iterative optimization and error recovery.
                         </p>
                     </div>
 
@@ -238,9 +238,9 @@
                     
                     <div class="column-figure">
                         <div class="figure-container">
-                            <img src="assets/pareto-frontier.png" alt="Pareto Frontier" class="figure-image">
+                            <img src="assets/cost_vs_accuracy_three_models_si.pdf" alt="Pareto Frontier" class="figure-image">
                             <p class="figure-caption">
-                                <strong>Figure 2.</strong> Energy Deviation and Computational Cost Variations with different DFT Parameters for Silicon (Space Group Fd-3m). TritonDFT learns to identify and select configurations on the Pareto frontier (highlighted), achieving optimal accuracy-cost trade-offs.
+                                <strong>Figure 2.</strong> Energy Deviation and Computational Cost Variations with different DFT Parameters for Silicon (Space Group Fd-3m). TritonDFT learns to identify and select configurations on the Pareto frontier, achieving optimal accuracy-cost trade-offs.
                             </p>
                         </div>
                     </div>
@@ -314,104 +314,7 @@
             </div>
         </section>
 
-        <!-- Results Section -->
-        <section id="results" class="content-section">
-            <div class="container">
-                <h2 class="section-title">Experimental Results</h2>
-
-                <h3 class="subsection-title">Main Results</h3>
-                <p class="results-intro">
-                    Comprehensive experiments demonstrate the potential of TritonDFT as a practical building block for real-world research. We compare against manual workflows, existing automation tools, and LLM-based agents.
-                </p>
-
-                <div class="results-table-container">
-                    <table class="results-table">
-                        <thead>
-                            <tr>
-                                <th>Method</th>
-                                <th>Structural Opt.</th>
-                                <th>Band Structure</th>
-                                <th>Phonon Calc.</th>
-                                <th>Adsorption</th>
-                                <th>Avg. Δ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Manual Workflow</td>
-                                <td>82.3</td>
-                                <td>75.6</td>
-                                <td>68.4</td>
-                                <td>71.2</td>
-                                <td>—</td>
-                            </tr>
-                            <tr>
-                                <td>Atomate</td>
-                                <td>78.5</td>
-                                <td>72.1</td>
-                                <td>64.8</td>
-                                <td>68.3</td>
-                                <td>-5.2%</td>
-                            </tr>
-                            <tr>
-                                <td>GPT-4o</td>
-                                <td>71.2</td>
-                                <td>68.9</td>
-                                <td>58.7</td>
-                                <td>63.4</td>
-                                <td>-11.4%</td>
-                            </tr>
-                            <tr class="highlight-row">
-                                <td><strong>TritonDFT</strong></td>
-                                <td><strong>91.7</strong></td>
-                                <td><strong>88.3</strong></td>
-                                <td><strong>84.2</strong></td>
-                                <td><strong>86.5</strong></td>
-                                <td><strong>+14.9%</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="table-caption">
-                        <strong>Table 1.</strong> Accuracy comparison on DFTBench tasks. TritonDFT achieves substantial improvements over baselines across all task categories.
-                    </p>
-                </div>
-
-                <h3 class="subsection-title">Key Findings</h3>
-                <div class="findings-grid">
-                    <div class="finding-box success">
-                        <div class="finding-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h4>End-to-End Automation</h4>
-                        <p>TritonDFT successfully automates the complete DFT workflow from user query to result analysis, reducing manual intervention time by <strong>80-90%</strong>.</p>
-                    </div>
-                    
-                    <div class="finding-box success">
-                        <div class="finding-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h4>Pareto Optimization</h4>
-                        <p>Pareto-aware parameter inference significantly improves accuracy-cost trade-offs, achieving <strong>15-20% cost reduction</strong> at equivalent accuracy levels.</p>
-                    </div>
-                    
-                    <div class="finding-box success">
-                        <div class="finding-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h4>Extensible Design</h4>
-                        <p>The explicit task-to-executable mapping enables support for diverse DFT tasks, from simple structural relaxation to complex phonon property calculations.</p>
-                    </div>
-                    
-                    <div class="finding-box info">
-                        <div class="finding-icon">
-                            <i class="fas fa-info-circle"></i>
-                        </div>
-                        <h4>LLM Capability Analysis</h4>
-                        <p>Experiments reveal substantial capability differences across LLMs in different workflow steps, with domain knowledge being the primary bottleneck.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="results"> 到 </section>
 
         <!-- Share Section -->
         <section id="share" class="content-section bg-light">

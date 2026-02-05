@@ -1,0 +1,250 @@
+% 请确保在导言区添加以下包：
+% \usepackage{booktabs}
+% \usepackage{makecell}
+% \usepackage[table]{xcolor} % 必须加 [table] 才能支持 rowcolor
+\begin{table*}[t]
+    \centering
+    \caption{Comparison of \tool{} with state-of-the-art agentic DFT frameworks.}
+    \label{tab:dft_agent_benchmark_compare}
+    
+    \small
+    % \setlength{\tabcolsep}{10pt} % 极度收紧间距以容纳10列
+    \renewcommand{\arraystretch}{1.3} 
+    
+    \scalebox{0.74}{
+    % 1(l) + 3(Framework) + 6(Benchmark) = 10 Columns
+    \begin{tabular}{p{2.6cm}>{\centering\arraybackslash}m{2.6cm}ccccccc}
+    \toprule
+    
+    % === 表头第一行 ===
+    \multirow{2}{*}{\textbf{Method}} &
+      \multicolumn{3}{c}{\textbf{Framework Architecture}} &
+      \multicolumn{5}{c}{\textbf{Evaluation Dataset \& Metrics}} \\ 
+      \cmidrule(lr){2-4} \cmidrule(lr){5-9} 
+    
+    % === 表头第二行 ===
+     &
+      \begin{tabular}[c]{@{}c@{}}\textbf{Supported}\\\textbf{Task Types}\end{tabular} &
+      \begin{tabular}[c]{@{}c@{}}\textbf{Parameter}\\\textbf{Configuration}\end{tabular} &
+      \begin{tabular}[c]{@{}c@{}}\textbf{Knowledge}\\\textbf{Augmentation}\end{tabular} & % <--- 改名
+      \begin{tabular}[c]{@{}c@{}}\textbf{Number of}\\\textbf{Material Types}\end{tabular} & % <--- 新增
+      \begin{tabular}[c]{@{}c@{}}\textbf{Ground Truth}\\\textbf{Curation}\end{tabular} & % <--- 改名
+      \begin{tabular}[c]{@{}c@{}}\textbf{Accuracy-Cost}\\\textbf{Tradeoff}\end{tabular} &
+      \begin{tabular}[c]{@{}c@{}}\textbf{Parallel}\\\textbf{Efficiency}\end{tabular} &
+      \begin{tabular}[c]{@{}c@{}}\textbf{Monetary}\\\textbf{Cost}\end{tabular} \\ % <--- 新增
+    \midrule
+      
+    % --- DREAMS ---
+    \makecell[l]{DREAMS~\\\cite{wang2025dreams}} &
+      \makecell{Surface Chemistry\\(Adsorption)} & 
+      \makecell{Physics Only} & 
+      \makecell{Open Database} & % 统一竞品工具
+      \makecell{2 (Metal, \\ Insulator)} & % Types
+      \makecell{Public\\Dataset} &
+      \xmark &
+      \xmark &
+      \xmark \\ 
+    \midrule
+      
+    % --- VASPilot ---
+    \makecell[l]{VASPilot~\\\cite{liu2025vaspilot}} &
+      \makecell{Electronic Structure\\(Band, DOS)} & 
+      \makecell{Physics Only} & 
+      \makecell{Open Database} & % 统一竞品工具
+      \makecell{1 (Semiconductor)} & % Types
+      \makecell{Public\\Dataset} &
+      \xmark &
+      \xmark &
+      \xmark \\ 
+    \midrule
+      
+    % --- AgenticDFT ---
+    \makecell[l]{AgenticDFT~\\\cite{xia2025agenticDFT}} &
+      \makecell{Geometry \& Energetics\\(Relaxation, Band)} & 
+      \makecell{Physics Only} & 
+      \makecell{Open Database} & % 统一竞品工具
+      \makecell{2 (Metal, \\Semiconductor)} & % Types
+      \makecell{Public\\Dataset} &
+      \xmark &
+      \xmark &
+      \xmark \\ 
+    \midrule
+      
+    % --- TritonDFT (Ours) ---
+    \rowcolor{gray!10}
+      \textbf{\makecell{\tool{}\\(Ours)}} &
+      \textbf{\makecell{General QE Usage\\($> 10$ Types)}} & 
+      \textbf{\makecell{Physics + HPC\\(Pareto-aware)}} & 
+      \textbf{\makecell{Open Database\\+ Memory\\+ Human Interact.}} & % 核心优势：Memory
+      \textbf{\makecell{10 (Metal, Insulator,\\Superconductor,\\ Topological, ...)}} & % Types
+      \textbf{\makecell{Expert Curated\\Calculation}} & % 核心优势：非公开数据
+      \textbf{\cmark} &
+      \textbf{\cmark} &
+      \textbf{\cmark} \\ 
+    \bottomrule
+    
+    \end{tabular}
+    }
+    \end{table*}
+    
+    % \begin{table*}[t]
+    % \centering
+    % \caption{Comparison between \tool{} and prior work. \tool{} provides the most comprehensive evaluation on a diverse dataset of 10 material categories, encompassing the material domains of prior works as subsets. Uniquely, \tool{} explicitly benchmarks the Accuracy-Cost Tradeoff, Parallel Efficiency, and Monetary Cost.
+    % \zhen{"General Purpose Full Workflow" seems a bit unnatural to read; "Open Datasets" vs "Human-Curated Calculations" doesn't highlight our uniqueness/advantages here, "Open Datasets" sounds legitimate as well}
+    % }
+    
+    % \label{tab:dft_agent_benchmark_compare}
+    % \small
+    % \setlength{\tabcolsep}{6pt} % 保持宽间距，大气清晰
+    % % \renewcommand{\arraystretch}{1.25}
+    % \scalebox{0.8}{
+    % \begin{tabular}{lllccccc}
+    % \toprule
+    %  &
+    % \begin{tabular}[c]{@{}l@{}}\textbf{Task Types}\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}\textbf{Material Types}\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}\textbf{Ground Truth}\\\textbf{Source}\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}\textbf{Accuracy-Cost}\\\textbf{Tradeoff}\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}\textbf{Parallel}\\\textbf{Efficiency}\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}\textbf{Monetary}\\\textbf{Cost}\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}\textbf{\# of}\\\textbf{Cases}\end{tabular} \\
+    % \midrule
+    
+    % % --- DREAMS ---
+    % \makecell[l]{DREAMS~\\\cite{wang2025dreams}} &
+    % \begin{tabular}[l]{@{}l@{}}Surface Chemistry\\(Adsorption)\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}Surfaces Only\\\textbf{(1 Category)}\end{tabular} &
+    % \makecell[c]{Open Datasets} &
+    % \xmark &
+    % \xmark &
+    % \xmark &
+    % 29 \\
+    
+    % \midrule
+    
+    % % --- VASPilot ---
+    % \makecell[l]{VASPilot~\\\cite{liu2025vaspilot}} &
+    % \begin{tabular}[c]{@{}l@{}}Electronic Structure\\(Band Gap, DOS)\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}Low-Dimensional Materials\\\textbf{($\sim$1 Category)}\end{tabular} &
+    % Open Datasets &
+    % \xmark &
+    % \xmark &
+    % \xmark &
+    % $\sim$10 \\
+    
+    % \midrule
+    
+    % % --- MASTER ---
+    % \makecell[l]{MASTER~\\\cite{rothfarb2025hierarchicalmultiagent}} &
+    % \begin{tabular}[c]{@{}l@{}}Catalysis Screening\\(Binding Energy)\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}Doped Surfaces\\\textbf{(1 Category)}\end{tabular} &
+    % \xmark &
+    % \xmark &
+    % \xmark &
+    % \xmark &
+    % $\sim$15 \\
+    
+    % \midrule
+    
+    % % --- AgenticDFT ---
+    % \makecell[l]{AgenticDFT~\\\cite{xia2025agenticDFT}} &
+    % \begin{tabular}[c]{@{}l@{}}Geometry Optimization\\(Relaxation)\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}Bulk Crystals \& Surfaces\\\textbf{(2 Categories)}\end{tabular} &
+    % Open Datasets &
+    % \xmark &
+    % \xmark &
+    % \xmark &
+    % $\sim$80 \\
+    
+    % \midrule
+    
+    % % --- TritonDFT (Ours) ---
+    % \rowcolor{gray!10}
+    % \textbf{\tool{}}~(Ours) &
+    % \begin{tabular}[c]{@{}l@{}}\textbf{General Purpose}\\\textbf{Full Workflow}\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}\textbf{Diverse Set}\\\textbf{(10 Categories)}\end{tabular} &
+    % \makecell[c]{\textbf{Human-Curated}\\\textbf{Calculations}} &
+    % \makecell[c]{\textbf{\checkmark}\\\textbf{(Pareto Optimization)}} &
+    % \textbf{\checkmark} &
+    % \textbf{\checkmark} &
+    % \textbf{100} \\
+    % \bottomrule
+    % \end{tabular}
+    % }
+    % \end{table*}
+    
+    % \begin{table*}[t]
+    % \centering
+    % \caption{Comparison between \tool{} and prior work on evaluation of LLM agents for DFT automation.}
+    % \label{tab:dft_agent_benchmark_compare}
+    % \small
+    % \setlength{\tabcolsep}{4.5pt}
+    % \renewcommand{\arraystretch}{1.15}
+    % \begin{tabular}{lllcccc}
+    % \toprule
+    % Work &
+    % \begin{tabular}[c]{@{}c@{}}Task Types\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}Material Types\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}Accuracy\\Ground Truth\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}Parallel\\Efficiency\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}Monetary\\Cost\end{tabular} &
+    % \begin{tabular}[c]{@{}c@{}}\# of\\Cases\end{tabular} \\
+    % \midrule
+    
+    % \makecell[l]{DREAMS~\\\cite{wang2025dreams}} &
+    % \begin{tabular}[l]{@{}l@{}}lattice constant\\adsorption site (CO/Pt)\\XC uncertainty\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}bulk crystals\\surface (Pt(111))\end{tabular} &
+    % \makecell[l]{Open datasets} &
+    % -- &
+    % -- &
+    % \begin{tabular}[c]{@{}c@{}}29\end{tabular} \\
+    
+    % \midrule
+    
+    % \makecell[l]{VASPilot~\\\cite{liu2025vaspilot}} &
+    % \begin{tabular}[c]{@{}l@{}}lattice constant\\band gap\\bands DOS\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}TMDs(MoS$_2$,\\MoSe$_2$,WS$_2$,WSe$_2$)\end{tabular} &
+    % Open datasets &
+    % -- &
+    % -- &
+    % \begin{tabular}[c]{@{}c@{}}$\sim$10\end{tabular} \\
+    
+    % \midrule
+    
+    % \makecell[l]{MASTER~\\\cite{rothfarb2025hierarchicalmultiagent}} &
+    % \begin{tabular}[c]{@{}l@{}}catalyst screening\\(CO binding)\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}Cu(100)\\+ TM adatoms\end{tabular} &
+    % -- &
+    % -- &
+    % -- &
+    % \begin{tabular}[c]{@{}c@{}}$\sim$15\end{tabular} \\
+    
+    % \midrule
+    
+    % % \makecell[l]{SciLink~\\\cite{yao2025operationalizingDFT}} &
+    % % \begin{tabular}[c]{@{}l@{}}structure\\validation\end{tabular} &
+    % % \begin{tabular}[c]{@{}l@{}}graphene\\vacancy\\(example)\end{tabular} &
+    % % -- &
+    % % -- &
+    % % -- &
+    % % -- \\
+    
+    % \makecell[l]{AgenticDFT~\\\cite{xia2025agenticDFT}} &
+    % \begin{tabular}[c]{@{}l@{}}structure relaxation\\band structure\\adsorption energy\\thermodynamic \end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}bulk\\crystals\\surfaces\end{tabular} &
+    % -- &
+    % -- &
+    % -- &
+    % \begin{tabular}[c]{@{}c@{}}$\sim$80\end{tabular} \\
+    
+    % \midrule
+    % \textbf{\tool{}}~(Ours) &
+    % \begin{tabular}[c]{@{}l@{}}vc-relax\\scf\\nscf\\bands\\...\end{tabular} &
+    % \begin{tabular}[c]{@{}l@{}}diverse\\materials\\(broad)\end{tabular} &
+    % \makecell[l]{Human-curated\\ DFT calculation} &
+    % \checkmark &
+    % \checkmark &
+    % {<N>} \\
+    % \bottomrule
+    % \end{tabular}
+    % \end{table*}

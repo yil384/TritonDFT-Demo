@@ -1,0 +1,90 @@
+% \begin{table}[t]
+% \centering
+% \caption{Average cost consumption (USD) per query regarding API usage across different tasks.}
+% \label{tab:total_cost}
+% \scalebox{0.85}{
+% \begin{tabular}{lccc}
+% \toprule
+% Model & Struct Relax & Band Gap & DOS \\
+% \midrule
+% GPT-5.2           & 0.05 $\pm$ 0.02 & 0.15 $\pm$ 0.04 & 0.13 $\pm$ 0.04 \\
+% GPT-5.1           & 0.04 $\pm$ 0.02 & 0.13 $\pm$ 0.04 & 0.10 $\pm$ 0.03 \\
+% GPT-4o            & 0.06 $\pm$ 0.03 & 0.18 $\pm$ 0.04 & 0.14 $\pm$ 0.03 \\
+% Gemini 2.5 Pro    & 0.05 $\pm$ 0.03 & 0.13 $\pm$ 0.04 & 0.11 $\pm$ 0.04 \\
+% Gemini 2.5 Flash  & 0.01 $\pm$ 0.01 & 0.03 $\pm$ 0.01 & 0.03 $\pm$ 0.01 \\
+% Claude Opus 4.5   & 0.15 $\pm$ 0.08 & 0.44 $\pm$ 0.13 & 0.37 $\pm$ 0.11 \\
+% Claude Sonnet 4.5 & 0.15 $\pm$ 0.06 & 0.34 $\pm$ 0.09 & 0.28 $\pm$ 0.08 \\
+% \bottomrule
+% \end{tabular}
+% }
+% \end{table}
+
+\begin{table}[t]
+    \centering
+    \caption{Average cost consumption (USD) per query regarding API usage across different tasks.}
+    \label{tab:total_cost}
+    % 保持一致的极浅灰色
+    \definecolor{gc}{gray}{0.9}
+    \scalebox{0.85}{
+    \begin{tabular}{lccc}
+    \toprule
+    Model & Struct Relax & Band Gap & DOS \\
+    \midrule
+    GPT 5.2           & \cellcolor{gc!33}0.05 $\pm$ 0.02 & \cellcolor{gc!34}0.15 $\pm$ 0.04 & \cellcolor{gc!35}0.13 $\pm$ 0.04 \\
+    GPT 5.1           & \cellcolor{gc!27}0.04 $\pm$ 0.02 & \cellcolor{gc!30}0.13 $\pm$ 0.04 & \cellcolor{gc!27}0.10 $\pm$ 0.03 \\
+    GPT 4o            & \cellcolor{gc!40}0.06 $\pm$ 0.03 & \cellcolor{gc!41}0.18 $\pm$ 0.04 & \cellcolor{gc!38}0.14 $\pm$ 0.03 \\
+    Gemini 2.5 Pro    & \cellcolor{gc!33}0.05 $\pm$ 0.03 & \cellcolor{gc!30}0.13 $\pm$ 0.04 & \cellcolor{gc!30}0.11 $\pm$ 0.04 \\
+    Gemini 2.5 Flash  & \cellcolor{gc!7}0.01 $\pm$ 0.01 & \cellcolor{gc!7}0.03 $\pm$ 0.01 & \cellcolor{gc!8}0.03 $\pm$ 0.01 \\
+    Claude Opus 4.5   & \cellcolor{gc!100}0.15 $\pm$ 0.08 & \cellcolor{gc!100}0.44 $\pm$ 0.13 & \cellcolor{gc!100}0.37 $\pm$ 0.11 \\
+    Claude Sonnet 4.5 & \cellcolor{gc!100}0.15 $\pm$ 0.06 & \cellcolor{gc!77}0.34 $\pm$ 0.09 & \cellcolor{gc!76}0.28 $\pm$ 0.08 \\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{table}
+    
+    % \begin{table}[t]
+    % \centering
+    % \caption{Average token usage per query across different DFT tasks.}
+    % \label{tab:avg_tokens}
+    % \scalebox{1}{
+    % \begin{tabular}{lcccc}
+    % \toprule
+    % \# of tokens
+    % & VC-relax
+    % & SCF
+    % & Band Gap \\
+    % \midrule
+    % GPT-5.2           & -- & -- & -- \\
+    % GPT-5             & -- & -- & -- \\
+    % GPT-4o            & -- & -- & -- \\
+    % Gemini 3.0 Pro    & -- & -- & -- \\
+    % Gemini 3.0 Flash  & -- & -- & -- \\
+    % Claude Opus 4.5   & -- & -- & -- \\
+    % \bottomrule
+    % \end{tabular}
+    % }
+    % \end{table}
+    
+    % \begin{table}[t]
+    % \centering
+    % \caption{Average cost consumption (USD) per query regarding API usage.}
+    % \label{tab:total_cost}
+    % \scalebox{1}{
+    % \begin{tabular}{lcccc}
+    % \toprule
+    % Model
+    % & VC-relax
+    % & SCF
+    % & NSCF
+    % & Band Gap \\
+    % \midrule
+    % GPT-5.2           & -- & -- & -- & -- \\
+    % GPT-5             & -- & -- & -- & -- \\
+    % GPT-4o            & -- & -- & -- & -- \\
+    % Gemini 3.0 Pro    & -- & -- & -- & -- \\
+    % Gemini 3.0 Flash  & -- & -- & -- & -- \\
+    % Claude Opus 4.5   & -- & -- & -- & -- \\
+    % \bottomrule
+    % \end{tabular}
+    % }
+    % \end{table}

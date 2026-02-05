@@ -1,0 +1,76 @@
+% \begin{table}[t]
+% \centering
+% \caption{Relative speedup ($\%$) of parallel execution of different LLMs over the default baseline across different CPU core numbers.}
+% \label{tab:scaling_speedup}
+% \scalebox{0.9}{
+% \begin{tabular}{lrrc}
+% \toprule
+% Model & 16 Cores & 32 Cores & 64 Cores \\
+% \midrule
+% GPT 5.2             & +14.4\% & +4.2\% & +15.1\% \\
+% GPT 5.1             & +11.3\% & -5.8\% & -14.1\% \\
+% GPT 4o              & -21.0\% & -34.0\% & -23.6\% \\
+% GPT 4o mini         & -25.7\% & -25.6\% & +2.8\% \\
+% Gemini 2.5 Pro      & 4.74\% & -6.4\% & -3.29\% \\
+% Gemini 2.5 Flash    & -20.7\% & -43.7\% & -32.0\% \\
+% Claude 4.5 Opus     & \textbf{+15.4\%} & \textbf{+16.1\%} & \textbf{+16.1\%} \\
+% Claude 4.5 Sonnet & +13.0\% & +5.1\% & +2.43\% \\
+% \bottomrule
+% \end{tabular}
+% }
+% \end{table}
+
+\begin{table}[t]
+    \centering
+    \caption{Relative speedup ($\%$) of parallel execution of different LLMs over the default baseline across different CPU core numbers.}
+    \label{tab:scaling_speedup}
+    \definecolor{gc}{gray}{0.9} % 保持一致的极浅灰
+    \scalebox{0.9}{
+    \begin{tabular}{lrrc}
+    \toprule
+    Model & 16 Cores & 32 Cores & 64 Cores \\
+    \midrule
+    GPT 5.2             & \cellcolor{gc!90}+14.4\% & \cellcolor{gc!50}+4.2\% & \cellcolor{gc!94}+15.1\% \\
+    GPT 5.1             & \cellcolor{gc!70}+11.3\% & \cellcolor{gc!30}-5.8\% & \cellcolor{gc!20}-14.1\% \\
+    GPT 4o              & \cellcolor{gc!15}-21.0\% & \cellcolor{gc!5}-34.0\% & \cellcolor{gc!12}-23.6\% \\
+    GPT 4o mini         & \cellcolor{gc!10}-25.7\% & \cellcolor{gc!10}-25.6\% & \cellcolor{gc!45}+2.8\% \\
+    Gemini 2.5 Pro      & \cellcolor{gc!52}4.74\% & \cellcolor{gc!28}-6.4\% & \cellcolor{gc!35}-3.29\% \\
+    Gemini 2.5 Flash    & \cellcolor{gc!15}-20.7\% & \cellcolor{gc!2}-43.7\% & \cellcolor{gc!8}-32.0\% \\
+    Claude 4.5 Opus     & \cellcolor{gc!95}\textbf{+15.4\%} & \cellcolor{gc!100}\textbf{+16.1\%} & \cellcolor{gc!100}\textbf{+16.1\%} \\
+    Claude 4.5 Sonnet & \cellcolor{gc!80}+13.0\% & \cellcolor{gc!55}+5.1\% & \cellcolor{gc!42}+2.43\% \\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{table}
+    
+    % \begin{table*}[t]
+    % \centering
+    % \caption{Speedup of different models compared to the default MPI parallelization setting on \bench{} across different LLMs, tasks and materials.}
+    % \label{tab:dft_speedup}
+    % \scalebox{0.8}{
+    % \begin{tabular}{lcccccccccccc}
+    % \toprule
+    % Speedup ($\times$)
+    % & \multicolumn{3}{c}{VC-relax}
+    % & \multicolumn{3}{c}{SCF}
+    % & \multicolumn{3}{c}{NSCF}
+    % & \multicolumn{3}{c}{Band Gap} \\
+    % \cmidrule(lr){2-4}
+    % \cmidrule(lr){5-7}
+    % \cmidrule(lr){8-10}
+    % \cmidrule(lr){11-13}
+    % & Simple & Inter. & Complex
+    % & Simple & Inter. & Complex
+    % & Simple & Inter. & Complex
+    % & Simple & Inter. & Complex \\
+    % \midrule
+    % GPT-5.2           & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
+    % GPT-5             & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
+    % GPT-4o            & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
+    % Gemini 3.0 Pro    & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
+    % Gemini 3.0 Flash  & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
+    % Claude Opus 4.5   & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
+    % \bottomrule
+    % \end{tabular}
+    % }
+    % \end{table*}

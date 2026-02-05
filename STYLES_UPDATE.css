@@ -1,0 +1,90 @@
+/* 
+    TritonDFT Additional Styles for Updated Tables
+    将以下样式添加到 styles.css 文件末尾
+*/
+
+/* Framework Comparison Table */
+.framework-table th {
+    font-size: 13px;
+    padding: 10px 8px;
+    line-height: 1.4;
+}
+
+.framework-table td {
+    font-size: 14px;
+    padding: 15px 10px;
+    line-height: 1.5;
+}
+
+/* Best Row Highlighting */
+.best-row {
+    background: rgba(46, 204, 113, 0.08) !important;
+}
+
+.best-row td {
+    font-weight: 600;
+}
+
+/* Table with Multi-row Headers */
+.results-table thead tr:first-child th[colspan] {
+    background: #f8f9fa;
+    border-bottom: 2px solid #ddd;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.results-table thead tr:nth-child(2) th {
+    background: #f8f9fa;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px 8px;
+}
+
+/* Responsive Table Enhancements */
+@media (max-width: 968px) {
+    .framework-table {
+        font-size: 12px;
+    }
+    
+    .framework-table th,
+    .framework-table td {
+        padding: 8px 5px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .results-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .results-table {
+        min-width: 800px;
+    }
+    
+    .framework-table {
+        min-width: 1000px;
+    }
+}
+
+/* Color Highlights for Positive/Negative Values */
+.results-table td[style*="color: green"] {
+    font-weight: 600;
+}
+
+.results-table td[style*="color: red"] {
+    font-weight: 600;
+}
+
+/* Checkmark and Cross Symbols */
+.results-table td:has(strong):contains("✓") {
+    color: #27ae60;
+    font-size: 18px;
+}
+
+.results-table td:contains("✗") {
+    color: #e74c3c;
+    font-size: 18px;
+}
+

@@ -10,31 +10,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Top Navigation Bar -->
+    <!-- Top Navigation Bar — AgentFlow-style research links -->
     <nav class="top-navbar">
         <div class="container">
             <div class="nav-items">
-                <a href="#" class="nav-icon"><i class="fas fa-home"></i></a>
-                <a href="#" class="nav-icon"><i class="fas fa-home"></i></a>
-                <a href="#" class="nav-icon"><i class="fas fa-home"></i></a>
-                <div class="nav-dropdown">
-                    <span class="nav-text">More Research <i class="fas fa-chevron-down"></i></span>
-                </div>
+                <span class="nav-dropdown">More Research <i class="fas fa-chevron-down"></i></span>
+                <a href="#" class="nav-pill active">TritonDFT</a>
+                <a href="https://anonymous.4open.science/r/TritonDFT-43C7/" class="nav-pill" target="_blank">Code</a>
+                <a href="#results" class="nav-pill">Results</a>
+                <a href="#demo" class="nav-pill">Demo</a>
+                <a href="#bibtex" class="nav-pill">Cite</a>
             </div>
         </div>
     </nav>
 
-    <!-- Table of Contents Sidebar -->
+    <!-- Table of Contents — Right Sidebar -->
     <div class="toc-sidebar" id="tocSidebar">
         <div class="toc-content" id="tocContent">
             <h3>Table of Contents</h3>
             <nav>
                 <a href="#introduction">Introduction</a>
+                <a href="#demo">Demo</a>
                 <a href="#workflow">TritonDFT System</a>
                 <a href="#pareto">Pareto-Aware Optimization</a>
                 <a href="#benchmark">DFTBench</a>
                 <a href="#results">Results</a>
-                <a href="#demo">Demo</a>
                 <a href="#share">Share</a>
                 <a href="#bibtex">BibTeX</a>
             </nav>
@@ -102,9 +102,15 @@
                 </div>
 
                 <!-- Abstract -->
-                <div class="performance-chart" style="text-align: left;">
-                    <p class="chart-caption" style="font-size: 16px; line-height: 1.8; color: #333;">
-                        Density Functional Theory (DFT) is a cornerstone of materials science, yet executing DFT in practice requires coordinating a complex, multi-step workflow. We present <strong>TritonDFT</strong>, a multi-agent framework that enables efficient and accurate DFT execution through an expert-curated, extensible workflow design, <strong>Pareto-aware parameter inference</strong>, and multi-source knowledge augmentation. We further introduce <strong>DFTBench</strong>, a benchmark for evaluating the agent's multi-dimensional capabilities, spanning science expertise, trade-off optimization, HPC knowledge, and cost efficiency.
+                <p class="abstract-text">
+                    Density Functional Theory (DFT) is a cornerstone of materials science, yet executing DFT in practice requires coordinating a complex, multi-step workflow. We present <strong>TritonDFT</strong>, a multi-agent framework that enables efficient and accurate DFT execution through an expert-curated, extensible workflow design, <strong>Pareto-aware parameter inference</strong>, and multi-source knowledge augmentation. We further introduce <strong>DFTBench</strong>, a benchmark for evaluating the agent's multi-dimensional capabilities, spanning science expertise, trade-off optimization, HPC knowledge, and cost efficiency.
+                </p>
+
+                <!-- Hero Figure — like AgentFlow performance chart -->
+                <div class="hero-figure">
+                    <img src="assets/intro4.png" alt="DFT Workflow Time Comparison">
+                    <p class="figure-caption">
+                        DFT execution is a complex, multi-step process requiring heterogeneous domain expertise. <strong>TritonDFT reduces the per-step time from minutes–hours to seconds–minutes</strong>, providing automation across the entire workflow.
                     </p>
                 </div>
             </div>
@@ -139,18 +145,37 @@
                     </p>
                 </div>
 
-                <!-- Time Comparison Figure -->
+                <!-- Radar overview in intro -->
                 <div class="figure-container">
-                    <img src="assets/intro4.png" alt="DFT Workflow Time Comparison" class="figure-image">
+                    <img src="assets/radar.png" alt="Performance Radar Chart" class="figure-image">
                     <p class="figure-caption">
-                        <strong>Figure 1.</strong> DFT execution is a complex, multi-step process requiring heterogeneous domain expertise. Based on an internal survey conducted with 19 domain researchers at the PhD level or above, manually handling each step typically takes minutes to hours. <strong>TritonDFT reduces the per-step time to the scale of seconds to minutes</strong>, and provides automation across the entire workflow.
+                        <strong>Figure 1.</strong> Performance analysis with Pass Rate and Cost Efficiency across different material types. Cost Efficiency is measured as (1 / Cost Factor), averaged over all passed cases within each type.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Video Section — right after Introduction like AgentFlow's YouTube -->
+        <section id="demo" class="content-section bg-light">
+            <div class="container">
+                <h2 class="section-title">Demo</h2>
+                <p class="results-intro">
+                    Watch TritonDFT in action — from user query to automated DFT execution, parameter optimization, and result analysis.
+                </p>
+                <div class="demo-video-container">
+                    <video class="demo-video" controls preload="metadata">
+                        <source src="assets/tritondft_website_64MB.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="figure-caption" style="text-align: center; margin-top: 16px;">
+                        <strong>TritonDFT Demo.</strong> End-to-end automated DFT workflow execution, showcasing the multi-agent framework with Pareto-aware parameter inference and iterative refinement.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- TritonDFT System Section -->
-        <section id="workflow" class="content-section bg-light">
+        <section id="workflow" class="content-section">
             <div class="container">
                 <h2 class="section-title"><strong>TritonDFT</strong>: An Expert-Informed Multi-Agent System</h2>
                 
@@ -207,7 +232,7 @@
         </section>
 
         <!-- Pareto-Aware Optimization Section -->
-        <section id="pareto" class="content-section">
+        <section id="pareto" class="content-section bg-light">
             <div class="container">
                 <h2 class="section-title">Pareto-Aware Parameter Inference</h2>
                 
@@ -248,7 +273,7 @@
         </section>
 
         <!-- DFTBench Section -->
-        <section id="benchmark" class="content-section bg-light">
+        <section id="benchmark" class="content-section">
             <div class="container">
                 <h2 class="section-title">DFTBench: Multi-Dimensional Capability Evaluation</h2>
                 
@@ -314,7 +339,7 @@
         </section>
 
         <!-- Results Section -->
-        <section id="results" class="content-section">
+        <section id="results" class="content-section bg-light">
             <div class="container">
                 <h2 class="section-title">Experimental Results</h2>
                 
@@ -512,13 +537,13 @@
                     </div>
                 </div>
 
-                <!-- Radar Chart -->
+                <!-- Cost vs Accuracy -->
                 <div class="results-content" style="margin-top: 60px;">
                     <h3 class="subsection-title">Performance by Material Type</h3>
                     <div class="figure-container">
-                        <img src="assets/radar.png" alt="Performance Radar Chart" class="figure-image">
+                        <img src="assets/cost_vs_accuracy_three_models_si.png" alt="Cost vs Accuracy Tradeoff" class="figure-image">
                         <p class="figure-caption">
-                            <strong>Figure 3.</strong> Performance analysis with Pass Rate and Cost Efficiency across different material types. Cost Efficiency is measured as (1 / Cost Factor), averaged over all passed cases within each type.
+                            <strong>Figure 3.</strong> Energy Deviation and Computational Cost Variations with different DFT Parameters for Silicon. TritonDFT learns to identify and select configurations on the Pareto frontier, achieving optimal accuracy-cost trade-offs.
                         </p>
                     </div>
                 </div>
@@ -802,25 +827,6 @@
             </div>
         </section>
 
-        <!-- Demo Video Section -->
-        <section id="demo" class="content-section bg-light">
-            <div class="container">
-                <h2 class="section-title">Demo</h2>
-                <p class="results-intro">
-                    Watch TritonDFT in action — from user query to automated DFT execution, parameter optimization, and result analysis.
-                </p>
-                <div class="demo-video-container">
-                    <video class="demo-video" controls preload="metadata" poster="">
-                        <source src="assets/tritondft_website_64MB.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="figure-caption" style="text-align: center; margin-top: 20px;">
-                        <strong>TritonDFT Demo.</strong> End-to-end automated DFT workflow execution, showcasing the multi-agent framework with Pareto-aware parameter inference and iterative refinement.
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <!-- Share Section -->
         <section id="share" class="content-section">
             <div class="container">
@@ -854,11 +860,12 @@
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Footer — AgentFlow multi-institution style -->
         <footer class="footer">
             <div class="container">
                 <div class="footer-logos">
-                    <div class="footer-logo">Anonymous Institution</div>
+                    <div class="footer-logo">Anonymous Institution 1</div>
+                    <div class="footer-logo">Anonymous Institution 2</div>
                 </div>
                 <p class="footer-note">
                     This website is adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a> and <a href="https://mathvista.github.io/" target="_blank">MathVista</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

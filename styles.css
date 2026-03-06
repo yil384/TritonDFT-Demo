@@ -971,6 +971,28 @@ body {
     display: block;
 }
 
+/* UCSD & LLNL logos — larger. Change width/height here to adjust size. */
+.footer-logo-ucsd img {
+    width: 200px;
+    height: 120px;
+}
+
+.footer-logo-llnl img {
+    padding-left: 50px;
+    width: 240px;
+    height: 110px;
+}
+@media (max-width: 768px) {
+    .footer-logo-ucsd img {
+        width: 200px;
+        height: 48px;
+    }
+    .footer-logo-llnl img {
+        width: 200px;
+        height: 48px;
+    }
+}
+
 .footer-note {
     font-size: 13px;
     line-height: 1.6;

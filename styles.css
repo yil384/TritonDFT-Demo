@@ -944,15 +944,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
+    gap: 40px;
+    flex-wrap: nowrap;
     margin-bottom: 24px;
 }
 
 .footer-logo {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 48px;
+    flex-shrink: 0;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+.footer-logo:hover {
+    opacity: 1;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .footer-note {
@@ -970,6 +986,18 @@ body {
 
 .footer-note a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+    .footer-logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+    .footer-logo {
+        width: 100px;
+        height: 40px;
+    }
 }
 
 /* ============================================

@@ -668,15 +668,17 @@ section { padding: 110px 24px; position: relative; }
   object-fit: contain;
   display: block;
 }
-/* LLNL: shield + 2-line text → individual elements are smaller than single-line
-   text logos, so we bump its display height to balance visual weight. */
-.logo-card[aria-label*="Livermore"] img { height: 60px; }
+/* LLNL has a wide aspect (shield + 2 lines of text) so its card needs to be
+   wider — otherwise the img width-clamp shrinks effective rendered height. */
+.logo-card[aria-label*="Livermore"] { width: 400px; }
+.logo-card[aria-label*="Livermore"] img { height: 56px; }
 .logo-card[aria-label="UC Merced"] img { height: 44px; }
 
 @media (max-width: 760px) {
   .logo-card { width: 200px; height: 76px; padding: 14px 20px; }
   .logo-card img { height: 40px; }
-  .logo-card[aria-label*="Livermore"] img { height: 52px; }
+  .logo-card[aria-label*="Livermore"] { width: 320px; }
+  .logo-card[aria-label*="Livermore"] img { height: 46px; }
   .logo-card[aria-label="UC Merced"] img { height: 36px; }
 }
 

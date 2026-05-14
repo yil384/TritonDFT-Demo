@@ -662,25 +662,15 @@ section { padding: 110px 24px; position: relative; }
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 .logo-card img {
-  max-height: 42px;
-  max-width: 100%;
+  height: 48px;
   width: auto;
-  height: auto;
+  max-width: 100%;
   object-fit: contain;
   display: block;
 }
-/* Per-logo visual balance: each asset has different padding/aspect in its file,
-   so they need individual scaling to feel the same weight. */
-.logo-card[aria-label="UC San Diego"] img { max-height: 64px; }
-.logo-card[aria-label="UC Merced"] img { max-height: 32px; }
-.logo-card[aria-label*="Livermore"] img { max-height: 48px; }
-
 @media (max-width: 760px) {
   .logo-card { width: 200px; height: 76px; padding: 14px 20px; }
-  .logo-card img { max-height: 36px; }
-  .logo-card[aria-label="UC San Diego"] img { max-height: 56px; }
-  .logo-card[aria-label="UC Merced"] img { max-height: 28px; }
-  .logo-card[aria-label*="Livermore"] img { max-height: 42px; }
+  .logo-card img { height: 40px; }
 }
 
 /* ============================================================

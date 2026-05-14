@@ -70,4 +70,41 @@
       window.scrollTo({ top, behavior: "smooth" });
     });
   });
+
+  // ───── Lightbox: click any [data-zoom] figure to expand full-screen ─────
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <img alt="" />
+  `;
+  document.body.appendChild(lightbox);
+  const lightboxImg = lightbox.querySelector("img");
+  const lightboxClose = lightbox.querySelector(".lightbox-close");
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox() {
+    lightbox.classList.remove("show");
+    document.body.style.overflow = "";
+    setTimeout(() => { lightboxImg.src = ""; }, 250);
+  }
+  lightbox.addEventListener("click", closeLightbox);
+  lightboxClose.addEventListener("click", (e) => { e.stopPropagation(); closeLightbox(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("show")) closeLightbox();
+  });
+
+  document.querySelectorAll("[data-zoom]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const src = el.getAttribute("data-zoom");
+      const img = el.querySelector("img");
+      const alt = img ? img.alt : "";
+      if (src) openLightbox(src, alt);
+    });
+  });
 })();

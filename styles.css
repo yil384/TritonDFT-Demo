@@ -191,8 +191,11 @@ img, video { max-width: 100%; display: block; }
   margin: 0 auto 28px;
   max-width: 720px;
   text-align: left;
-  background: rgba(13, 16, 24, 0.75);
-  backdrop-filter: blur(14px);
+  /* Near-opaque instead of translucent+backdrop-blur: appending a line inside a
+     backdrop-filtered box forces the browser to re-blur the animated molecule
+     canvas behind it on EVERY line — that's the full-screen flash. Solid bg = no
+     repaint of the backdrop, so lines stream in smoothly. */
+  background: rgba(11, 14, 21, 0.97);
   border: 1px solid var(--border-strong);
   border-radius: var(--r-lg);
   padding: 14px;
@@ -275,7 +278,14 @@ img, video { max-width: 100%; display: block; }
   max-height: 420px;
   overflow-y: auto;
 }
-.demo-line { display: flex; gap: 8px; align-items: baseline; }
+.demo-line {
+  display: flex; gap: 8px; align-items: baseline;
+  animation: demo-line-in 0.28s ease-out both;
+}
+@keyframes demo-line-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .demo-line .tag { flex-shrink: 0; font-weight: 600; width: 92px; }
 .demo-line.planner .tag { color: #7c9eff; }
 .demo-line.executor .tag { color: #fbbf24; }

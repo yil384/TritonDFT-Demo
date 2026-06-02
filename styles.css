@@ -668,17 +668,17 @@ section { padding: 110px 24px; position: relative; }
   object-fit: contain;
   display: block;
 }
-/* LLNL has a wide aspect (shield + 2 lines of text) so its card needs to be
-   wider — otherwise the img width-clamp shrinks effective rendered height. */
-.logo-card[aria-label*="Livermore"] { width: 400px; }
-.logo-card[aria-label*="Livermore"] img { height: 56px; }
+/* LANL has a wide aspect (shield + wordmark) so its card needs to be wider —
+   otherwise the img width-clamp shrinks effective rendered height. */
+.logo-card[aria-label*="Alamos"] { width: 400px; }
+.logo-card[aria-label*="Alamos"] img { height: 52px; }
 .logo-card[aria-label="UC Merced"] img { height: 44px; }
 
 @media (max-width: 760px) {
   .logo-card { width: 200px; height: 76px; padding: 14px 20px; }
   .logo-card img { height: 40px; }
-  .logo-card[aria-label*="Livermore"] { width: 320px; }
-  .logo-card[aria-label*="Livermore"] img { height: 46px; }
+  .logo-card[aria-label*="Alamos"] { width: 320px; }
+  .logo-card[aria-label*="Alamos"] img { height: 44px; }
   .logo-card[aria-label="UC Merced"] img { height: 36px; }
 }
 
